@@ -34,6 +34,7 @@ img {
 
 .header{
     border-bottom: 1px solid rgb(231, 233, 252);
+    box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08)
 }
 .header-container{
     display: flex;
@@ -44,6 +45,7 @@ img {
     display: flex;
     align-items: center;
 }
+
 
 .logo {
     font-family: "Raleway", sans-serif;
@@ -75,11 +77,33 @@ img {
         cursor:pointer;
         padding: 24px 0;
         display: block;
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
+
+.current {
+    position: relative;
+    color: rgba(64, 75, 191, 1);
+}
+
+.nav-link.current::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #404bbf;
+}
+
 .nav-link:hover,
 .nav-link:focus{
     color: #404bbf;
 }
+
 
 .address {
     font-style: normal;
@@ -96,6 +120,7 @@ img {
         line-height: 1.5;
         letter-spacing: 0.02em;
         color: #434455;
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .address-link:hover,
 .address-link:focus{
@@ -105,8 +130,12 @@ img {
 .hero-section{
     background-color: #2E2F42;
     padding: 188px 0;
-}
+    background-image: linear-gradient(rgba(46, 47, 66, 0.70),  rgba(46, 47, 66, 0.70)), url(../images/hero-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
+}
 
 .hero-title{
     font-weight: 700;
@@ -136,6 +165,7 @@ img {
         margin-left: auto;
         margin-top: 48px;
         display: block;
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button:hover,
 .button:focus{
@@ -175,6 +205,16 @@ img {
     width: calc((100% - 3 * 24px) / 4);
 }
 
+.features-icon-svg-box{
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        background-color: #F4F4FD;
+        margin-bottom: 8px;
+        height: 112px;
+        border: 1px solid #8e8f99;
+    }
 
 .features-title{
     font-weight: 500;
@@ -217,12 +257,16 @@ img {
     gap: 24px;
 }
 
+
 .team-list-item {
     background-color:#fff;
     justify-content: center;
     flex-direction: column;
     gap: 8px;
     border-radius: 0px 0px 4px 4px;
+    box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16),
+    0px 2px 1px rgba(46, 47, 66, 0.08)
 
 }
 
@@ -250,6 +294,40 @@ img {
         text-align: center;
 }
 
+.social-network-list{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    padding-top: 8px;
+}
+
+.social-network-item-list{
+    width: 40px;
+    height: 40px;
+}
+
+.social-network-link{
+width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #4D5AE5;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-network-link:hover,
+.social-network-link:focus {
+    background-color: #404bbf;
+    border-radius: 50%;
+}
+
+.social-network-svg{
+    fill: rgba(244, 244, 253, 1);
+    
+}
 
 .our-portfolio{
     font-weight: 700;
@@ -272,11 +350,54 @@ img {
 }
 
 .portfolio-section-item {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    padding-left: 0;
+    margin: 0;
     flex-direction: column;
     width: calc((100% - 2 * 24px) / 3);
 }
 
-.portfolio-app{
+..portfolio-section-item:hover {
+    box-shadow: 0 2px 1px 0 rgba(46, 47, 66, 0.08), 0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-section-item:hover .overlay-text {
+    transform: translateY(0);
+    background: #4d5ae5;
+}
+
+.overlay-box {
+    position: relative;
+    overflow: hidden;
+    width: 360px;
+    margin: 0 auto;
+}
+
+.overlay-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #f4f4fd;
+    padding: 40px 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #4d5ae5;
+}
+
+
+.portfolio-app {
     padding: 32px 16px;
     border: 1px solid #e7e9fc;
     border-top: none;
@@ -306,8 +427,17 @@ img {
 .footer{
     background-color: #2E2F42;
     padding: 100px 0;
-
+    margin: 0 auto;
+    width:100%;
 }
+
+.footer-container {
+    color: #2e2f42;
+    display: flex;
+    align-items: baseline;
+}
+
+
 .logo-two{
     font-family: "Raleway", sans-serif;
         font-weight: 700;
@@ -318,7 +448,17 @@ img {
         color: #4d5ae5;
         display: inline-block;
         margin-bottom: 16px;
+        display: inline-block;
 }
+
+.logo-text-footer-box {
+    width: 264px;
+    margin-right: 120px;
+}
+
+.footer-logo {
+    display: inline-block;
+    margin-bottom: 16px;}
 
 .logo-part-two{
     color:#f4f4fd;
@@ -341,3 +481,48 @@ img {
         max-width: 264px;
 }
 
+
+.social-network-footer-text{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.social-network-footer-list{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.social-network-footer-list-item{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.social-network-link-footer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4d5ae5;
+    border-radius: 50%;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-network-link-footer:hover,
+.social-network-link-footer:focus {
+    background-color: #31d0aa;
+}
+
+.svg-footer{
+    fill: rgba(244, 244, 253, 1);
+    display: flex;
+        width: 24px;
+        height: 24px;
+}
